@@ -30,7 +30,7 @@ Public Class updateStyle : Implements IHttpHandler
             End Try
 
 
-            Dim dbContext As New DB_9AA143_mendyaModel.DB_9AA143_mendyaEntities
+            Dim dbContext As New  DB_9AA143_mendyaModel.DB_9AA143_mendyaEntities
             Dim statuses = dbContext.Status.Where(Function(s) s.Path.Contains("\" + style + "\")).ToList
             For Each st In statuses
                 st.Path = st.Path.Replace("\" + style + "\", "\" + nstyle + "\")
