@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_9AA143_mendyaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityType Name="Drawbacks">
+          <Key>
+            <PropertyRef Name="Drawback_Number" />
+          </Key>
+          <Property Name="Drawback_Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="filed_date" Type="date" />
+        </EntityType>
+        <EntityType Name="Export">
+          <Key>
+            <PropertyRef Name="Company" />
+            <PropertyRef Name="Style" />
+            <PropertyRef Name="SizeColor" />
+            <PropertyRef Name="Export_Date" />
+            <PropertyRef Name="Import_Date" />
+          </Key>
+          <Property Name="Company" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Style" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SizeColor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Export_Date" Type="date" Nullable="false" />
+          <Property Name="Freight_carrier" Type="varchar" MaxLength="50" />
+          <Property Name="Reference_number" Type="varchar" MaxLength="50" />
+          <Property Name="Export_Country" Type="varchar" MaxLength="50" />
+          <Property Name="Import_Date" Type="date" Nullable="false" />
+          <Property Name="Units" Type="int" />
+          <Property Name="Duty" Type="numeric" Precision="22" Scale="15" />
+          <Property Name="Drawback_Number" Type="varchar" MaxLength="50" />
+          <Property Name="submitted" Type="bit" />
+          <Property Name="Destroyed" Type="bit" />
+          <Property Name="Invoice_No" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Import">
+          <Key>
+            <PropertyRef Name="company" />
+            <PropertyRef Name="style" />
+            <PropertyRef Name="sizecolor" />
+            <PropertyRef Name="import_date" />
+          </Key>
+          <Property Name="company" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="style" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sizecolor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="s7501" Type="varchar" MaxLength="50" />
+          <Property Name="port_code" Type="varchar" MaxLength="50" />
+          <Property Name="Origin" Type="varchar" MaxLength="50" />
+          <Property Name="import_date" Type="date" Nullable="false" />
+          <Property Name="conversion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tot_val" Type="numeric" Precision="22" Scale="15" />
+          <Property Name="HMF" Type="numeric" Precision="20" Scale="10" />
+          <Property Name="units" Type="int" />
+          <Property Name="Price" Type="numeric" Precision="22" Scale="15" />
+          <Property Name="tarrif1" Type="varchar" MaxLength="50" />
+          <Property Name="tarrif2" Type="varchar" MaxLength="50" />
+          <Property Name="tarrif3" Type="varchar" MaxLength="50" />
+          <Property Name="tarrif4" Type="varchar" MaxLength="50" />
+          <Property Name="kilos1" Type="varchar" MaxLength="10" />
+          <Property Name="kilos2" Type="varchar" MaxLength="10" />
+          <Property Name="kilos3" Type="varchar" MaxLength="10" />
+          <Property Name="kilos4" Type="varchar" MaxLength="10" />
+          <Property Name="value1" Type="numeric" Precision="20" Scale="15" />
+          <Property Name="value2" Type="numeric" Precision="20" Scale="15" />
+          <Property Name="value3" Type="numeric" Precision="20" Scale="15" />
+          <Property Name="value4" Type="numeric" Precision="20" Scale="15" />
+          <Property Name="duty_per_piece" Type="varchar" MaxLength="50" />
+          <Property Name="MPF" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UnitsType" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="stid" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Path" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Comments" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Approved" Type="bit" />
+          <Property Name="stid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarrifs">
+          <Key>
+            <PropertyRef Name="Tarrif_Code" />
+          </Key>
+          <Property Name="Tarrif_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Percent_Rate" Type="varchar" MaxLength="10" />
+          <Property Name="Piece_Rate" Type="varchar" MaxLength="10" />
+          <Property Name="Kilo_Rate" Type="varchar" MaxLength="10" />
+          <Property Name="Related_Tarrifs" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Company" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BondedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HowMuch" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExpDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FilerNo" Type="nchar" MaxLength="10" />
+          <Property Name="FilerCode" Type="nchar" MaxLength="10" />
+          <Property Name="irsnumber" Type="varchar" MaxLength="50" />
+          <Property Name="Questionare" Type="bit" />
+          <Property Name="PermissionLetter" Type="bit" />
+          <Property Name="Agreement" Type="bit" />
+        </EntityType>
+        <Association Name="Export_Company_FK">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Export" Type="Self.Export" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Export">
+              <PropertyRef Name="Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Drawbacks_Drawback_Number">
+          <End Role="Drawbacks" Type="Self.Drawbacks" Multiplicity="0..1" />
+          <End Role="Export" Type="Self.Export" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drawbacks">
+              <PropertyRef Name="Drawback_Number" />
+            </Principal>
+            <Dependent Role="Export">
+              <PropertyRef Name="Drawback_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Import_Company_FK">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Import" Type="Self.Import" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Import">
+              <PropertyRef Name="company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_9AA143_mendyaModelStoreContainer">
+          <EntitySet Name="Drawbacks" EntityType="Self.Drawbacks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Export" EntityType="Self.Export" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Import" EntityType="Self.Import" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarrifs" EntityType="Self.Tarrifs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Export_Company_FK" Association="Self.Export_Company_FK">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Export" EntitySet="Export" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Drawbacks_Drawback_Number" Association="Self.FK_Drawbacks_Drawback_Number">
+            <End Role="Drawbacks" EntitySet="Drawbacks" />
+            <End Role="Export" EntitySet="Export" />
+          </AssociationSet>
+          <AssociationSet Name="Import_Company_FK" Association="Self.Import_Company_FK">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Import" EntitySet="Import" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_9AA143_mendyaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityType Name="Drawback">
+          <Key>
+            <PropertyRef Name="Drawback_Number" />
+          </Key>
+          <Property Name="Drawback_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="filed_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Exports" Relationship="Self.FK_Drawbacks_Drawback_Number" FromRole="Drawbacks" ToRole="Export" />
+        </EntityType>
+        <EntityType Name="Export">
+          <Key>
+            <PropertyRef Name="Company" />
+            <PropertyRef Name="Style" />
+            <PropertyRef Name="SizeColor" />
+            <PropertyRef Name="Export_Date" />
+            <PropertyRef Name="Import_Date" />
+          </Key>
+          <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Style" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SizeColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Export_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Freight_carrier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Reference_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Export_Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Import_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Units" Type="Int32" />
+          <Property Name="Duty" Type="Decimal" Precision="22" Scale="15" />
+          <Property Name="submitted" Type="Boolean" />
+          <Property Name="Destroyed" Type="Boolean" />
+          <Property Name="Invoice_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Drawback" Relationship="Self.FK_Drawbacks_Drawback_Number" FromRole="Export" ToRole="Drawbacks" />
+          <NavigationProperty Name="User" Relationship="Self.Export_Company_FK" FromRole="Export" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Import">
+          <Key>
+            <PropertyRef Name="company" />
+            <PropertyRef Name="style" />
+            <PropertyRef Name="sizecolor" />
+            <PropertyRef Name="import_date" />
+          </Key>
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="style" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sizecolor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="s7501" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="port_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Origin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="import_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="conversion" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tot_val" Type="Decimal" Precision="22" Scale="15" />
+          <Property Name="HMF" Type="Decimal" Precision="20" Scale="10" />
+          <Property Name="units" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="22" Scale="15" />
+          <Property Name="tarrif1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tarrif2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tarrif3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tarrif4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kilos1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="kilos2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="kilos3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="kilos4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="value1" Type="Decimal" Precision="20" Scale="15" />
+          <Property Name="value2" Type="Decimal" Precision="20" Scale="15" />
+          <Property Name="value3" Type="Decimal" Precision="20" Scale="15" />
+          <Property Name="value4" Type="Decimal" Precision="20" Scale="15" />
+          <Property Name="duty_per_piece" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MPF" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UnitsType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.Import_Company_FK" FromRole="Import" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="stid" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Approved" Type="Boolean" />
+          <Property Name="stid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Tarrif">
+          <Key>
+            <PropertyRef Name="Tarrif_Code" />
+          </Key>
+          <Property Name="Tarrif_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Percent_Rate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Piece_Rate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Kilo_Rate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Related_Tarrifs" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BondedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HowMuch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FilerNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="FilerCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="irsnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Questionare" Type="Boolean" />
+          <Property Name="PermissionLetter" Type="Boolean" />
+          <Property Name="Agreement" Type="Boolean" />
+          <NavigationProperty Name="Exports" Relationship="Self.Export_Company_FK" FromRole="Users" ToRole="Export" />
+          <NavigationProperty Name="Imports" Relationship="Self.Import_Company_FK" FromRole="Users" ToRole="Import" />
+        </EntityType>
+        <Association Name="FK_Drawbacks_Drawback_Number">
+          <End Role="Drawbacks" Type="Self.Drawback" Multiplicity="0..1" />
+          <End Role="Export" Type="Self.Export" Multiplicity="*" />
+        </Association>
+        <Association Name="Export_Company_FK">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Export" Type="Self.Export" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Export">
+              <PropertyRef Name="Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Import_Company_FK">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Import" Type="Self.Import" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Import">
+              <PropertyRef Name="company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_9AA143_mendyaEntities">
+          <EntitySet Name="Drawbacks" EntityType="Self.Drawback" />
+          <EntitySet Name="Exports" EntityType="Self.Export" />
+          <EntitySet Name="Imports" EntityType="Self.Import" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Tarrifs" EntityType="Self.Tarrif" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Drawbacks_Drawback_Number" Association="Self.FK_Drawbacks_Drawback_Number">
+            <End Role="Drawbacks" EntitySet="Drawbacks" />
+            <End Role="Export" EntitySet="Exports" />
+          </AssociationSet>
+          <AssociationSet Name="Export_Company_FK" Association="Self.Export_Company_FK">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Export" EntitySet="Exports" />
+          </AssociationSet>
+          <AssociationSet Name="Import_Company_FK" Association="Self.Import_Company_FK">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Import" EntitySet="Imports" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="DB_9AA143_mendyaModelStoreContainer" CdmEntityContainer="DB_9AA143_mendyaEntities">
+          <EntitySetMapping Name="Drawbacks">
+            <EntityTypeMapping TypeName="DB_9AA143_mendyaModel.Drawback">
+              <MappingFragment StoreEntitySet="Drawbacks">
+                <ScalarProperty Name="Drawback_Number" ColumnName="Drawback_Number" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="filed_date" ColumnName="filed_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exports">
+            <EntityTypeMapping TypeName="DB_9AA143_mendyaModel.Export">
+              <MappingFragment StoreEntitySet="Export">
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="SizeColor" ColumnName="SizeColor" />
+                <ScalarProperty Name="Export_Date" ColumnName="Export_Date" />
+                <ScalarProperty Name="Freight_carrier" ColumnName="Freight_carrier" />
+                <ScalarProperty Name="Reference_number" ColumnName="Reference_number" />
+                <ScalarProperty Name="Export_Country" ColumnName="Export_Country" />
+                <ScalarProperty Name="Import_Date" ColumnName="Import_Date" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+                <ScalarProperty Name="Duty" ColumnName="Duty" />
+                <ScalarProperty Name="submitted" ColumnName="submitted" />
+                <ScalarProperty Name="Destroyed" ColumnName="Destroyed" />
+                <ScalarProperty Name="Invoice_No" ColumnName="Invoice_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Imports">
+            <EntityTypeMapping TypeName="DB_9AA143_mendyaModel.Import">
+              <MappingFragment StoreEntitySet="Import">
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="style" ColumnName="style" />
+                <ScalarProperty Name="sizecolor" ColumnName="sizecolor" />
+                <ScalarProperty Name="s7501" ColumnName="s7501" />
+                <ScalarProperty Name="port_code" ColumnName="port_code" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="import_date" ColumnName="import_date" />
+                <ScalarProperty Name="conversion" ColumnName="conversion" />
+                <ScalarProperty Name="tot_val" ColumnName="tot_val" />
+                <ScalarProperty Name="HMF" ColumnName="HMF" />
+                <ScalarProperty Name="units" ColumnName="units" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="tarrif1" ColumnName="tarrif1" />
+                <ScalarProperty Name="tarrif2" ColumnName="tarrif2" />
+                <ScalarProperty Name="tarrif3" ColumnName="tarrif3" />
+                <ScalarProperty Name="tarrif4" ColumnName="tarrif4" />
+                <ScalarProperty Name="kilos1" ColumnName="kilos1" />
+                <ScalarProperty Name="kilos2" ColumnName="kilos2" />
+                <ScalarProperty Name="kilos3" ColumnName="kilos3" />
+                <ScalarProperty Name="kilos4" ColumnName="kilos4" />
+                <ScalarProperty Name="value1" ColumnName="value1" />
+                <ScalarProperty Name="value2" ColumnName="value2" />
+                <ScalarProperty Name="value3" ColumnName="value3" />
+                <ScalarProperty Name="value4" ColumnName="value4" />
+                <ScalarProperty Name="duty_per_piece" ColumnName="duty_per_piece" />
+                <ScalarProperty Name="MPF" ColumnName="MPF" />
+                <ScalarProperty Name="UnitsType" ColumnName="UnitsType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="DB_9AA143_mendyaModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="stid" ColumnName="stid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarrifs">
+            <EntityTypeMapping TypeName="DB_9AA143_mendyaModel.Tarrif">
+              <MappingFragment StoreEntitySet="Tarrifs">
+                <ScalarProperty Name="Tarrif_Code" ColumnName="Tarrif_Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Percent_Rate" ColumnName="Percent_Rate" />
+                <ScalarProperty Name="Piece_Rate" ColumnName="Piece_Rate" />
+                <ScalarProperty Name="Kilo_Rate" ColumnName="Kilo_Rate" />
+                <ScalarProperty Name="Related_Tarrifs" ColumnName="Related_Tarrifs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DB_9AA143_mendyaModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="BondedBy" ColumnName="BondedBy" />
+                <ScalarProperty Name="HowMuch" ColumnName="HowMuch" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="FilerNo" ColumnName="FilerNo" />
+                <ScalarProperty Name="FilerCode" ColumnName="FilerCode" />
+                <ScalarProperty Name="irsnumber" ColumnName="irsnumber" />
+                <ScalarProperty Name="Questionare" ColumnName="Questionare" />
+                <ScalarProperty Name="PermissionLetter" ColumnName="PermissionLetter" />
+                <ScalarProperty Name="Agreement" ColumnName="Agreement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Drawbacks_Drawback_Number" TypeName="DB_9AA143_mendyaModel.FK_Drawbacks_Drawback_Number" StoreEntitySet="Export">
+            <EndProperty Name="Drawbacks">
+              <ScalarProperty Name="Drawback_Number" ColumnName="Drawback_Number" />
+            </EndProperty>
+            <EndProperty Name="Export">
+              <ScalarProperty Name="Company" ColumnName="Company" />
+              <ScalarProperty Name="Style" ColumnName="Style" />
+              <ScalarProperty Name="SizeColor" ColumnName="SizeColor" />
+              <ScalarProperty Name="Export_Date" ColumnName="Export_Date" />
+              <ScalarProperty Name="Import_Date" ColumnName="Import_Date" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Drawback_Number" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Export_Company_FK" TypeName="DB_9AA143_mendyaModel.Export_Company_FK" StoreEntitySet="Export">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="Username" ColumnName="Company" />
+            </EndProperty>
+            <EndProperty Name="Export">
+              <ScalarProperty Name="Company" ColumnName="Company" />
+              <ScalarProperty Name="Style" ColumnName="Style" />
+              <ScalarProperty Name="SizeColor" ColumnName="SizeColor" />
+              <ScalarProperty Name="Export_Date" ColumnName="Export_Date" />
+              <ScalarProperty Name="Import_Date" ColumnName="Import_Date" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Import_Company_FK" TypeName="DB_9AA143_mendyaModel.Import_Company_FK" StoreEntitySet="Import">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="Username" ColumnName="company" />
+            </EndProperty>
+            <EndProperty Name="Import">
+              <ScalarProperty Name="company" ColumnName="company" />
+              <ScalarProperty Name="style" ColumnName="style" />
+              <ScalarProperty Name="sizecolor" ColumnName="sizecolor" />
+              <ScalarProperty Name="import_date" ColumnName="import_date" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

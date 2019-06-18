@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eccc77daeb9c49939ad60bc44642b911" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_9AA143_mendyaModel.Drawback" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9AA143_mendyaModel.Export" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9AA143_mendyaModel.Import" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9AA143_mendyaModel.Status" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9AA143_mendyaModel.Tarrif" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9AA143_mendyaModel.User" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="DB_9AA143_mendyaModel.FK_Drawbacks_Drawback_Number" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9AA143_mendyaModel.Export_Company_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9AA143_mendyaModel.Import_Company_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Edrawbacks", ".", "{80225253-4A6A-4C2E-AD26-D635E9C0EFC0}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_49442"
+		Debug.AspNetCompiler.PhysicalPath = "..\Edrawbacks\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49442\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_49442"
+		Release.AspNetCompiler.PhysicalPath = "..\Edrawbacks\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49442\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "49442"
+		SlnRelativePath = "..\Edrawbacks\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80225253-4A6A-4C2E-AD26-D635E9C0EFC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80225253-4A6A-4C2E-AD26-D635E9C0EFC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3AAE2057-8921-4B47-A722-A9B73B700828}
+	EndGlobalSection
+EndGlobal

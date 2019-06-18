@@ -1,0 +1,139 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>eDRAWBACK</title>
+    <link rel="stylesheet" type="text/css" href="Styles/style.css" media="screen" />
+    <link type="image/x-icon" href="favicon.ico" rel="icon" />
+    <link type="image/x-icon" href="favicon.ico" rel="shortcut icon" />
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src="Scripts/jquery.cokie.js" ></script>
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <script src="//code.jquery.com/ui/1.11.0-beta.1/jquery-ui.js"></script>
+    <script src="Scripts/jquery-migrate.min.js"></script>
+    <script type="text/javascript">
+        /* http://learnedstuffs.wordpress.com/2012/05/24/jquery-highlighting-the-menu-item-for-the-current-page/  */
+        $(document).ready(function () {
+            $('#navigation a').each(function (index) {
+                if (this.href.trim() == window.location)
+                    $(this).addClass("active");
+            });
+        });
+</script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+
+        <div id="container">
+            <div id="holder" class="clearfix">
+                <div id="logo">&nbsp;
+<%--                    <span id="slogan">“A penny saved is a penny earned” Let eDRAWBACK save you millions of pennies.</span>--%>
+                </div>
+<%--                <div id="navigation">
+                    <ul>
+                        <li><a href="Default.aspx">HOME</a></li>
+                        <li><a href="About.aspx">ABOUT</a></li>
+                        <li><a href="Eligibility.aspx">ELIGIBILITY</a></li>
+                        <li><a href="Advantages.aspx">ADVANTAGES</a></li>
+                        <li><a href="Calculate.aspx">CALCULATE YOUR DRAWBACK</a></li>
+                        <li><a href="Contact.aspx">CONTACT</a></li>
+                        <li><a href="Login.aspx">LOGIN</a></li>
+                    </ul>
+                </div>
+                <div id="header"></div>--%>
+                <div id="content"><div style="border-bottom:1px solid #DADADA;">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        
+                    </asp:ContentPlaceHolder></div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                        </asp:ContentPlaceHolder>
+                </div>
+                <div id="news">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+
+                    </asp:ContentPlaceHolder>
+<%--                    <div class="newsItem">
+                        <h1>Services of eDrawback</h1>
+                        <p>The staff at eDrawback has come up with a way to efficiently store all the necessary documentation in order to properly file for a drawback. With keeping your valued information safe yet allowing for us to quickly recall all the import documents.  Our system allows your company to stream line the filing process so that no extra staff is required.</p>
+                    </div>--%>
+<%--                    <div class="newsItem">
+                        <h1>Benefits of eDrawback</h1>
+                        <p>There are no up front costs in using eDrawback; we receive a percentage of what is recovered for you. Additionally, the eDrawback’ file system will allow you to access old invoices and documents which would have otherwise been lost </p>
+                    </div>--%>
+                </div>
+            </div>
+            <div id="footer" name="anchor">
+<%--                <span id="copyright">Design by <a href="http://www.sitecreative.net" target="_blank" title="Opens link to SiteCreative.net in a New Window">SiteCreative</a></span>--%>
+<%--                <ul>
+                    <li><a href="Default.aspx">Home</a></li>
+                    <li><a href="About.aspx">About</a></li>
+                    <li><a href="Eligibility.aspx">Eligiblity</a></li>
+                    <li><a href="Advantages.aspx">Advantages</a></li>
+                    <li><a href="Calculate.aspx">Calculate Your Drawback</a></li>
+                    <li><a href="Contact.aspx">Contact</a></li>
+                    <li><a href="Login.aspx">Login</a></li>
+                    
+                </ul>--%>
+            </div>
+        </div>
+
+
+        <%--        <div id="container">
+            <div id="header">
+                <h1>eDRAWBACK</h1>
+                <h2>The right choice</h2>
+                <p id="layoutdims">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </p>
+            </div>
+            <div class="colmask leftmenu">
+                <div class="colleft">
+                    <div class="col1">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div class="col2">
+                        <div id="ads">
+                            <a href="Default.aspx">
+                                <img src="Images/eDrawback-Logo.png" />
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="default.aspx">HOME</a>
+                                </li>
+                                <li>
+                                    <a href="About.aspx">ABOUT</a>
+                                </li>
+                                <li>
+                                    <a href="Eligibility.aspx">ELIGIBILITY</a>
+                                </li>
+                                <li>
+                                    <a href="Advantages.aspx">ADVANTAGES OF EDRAWBACK</a>
+                                </li>
+                                <li>
+                                    <a href="Calculate.aspx">YOUR YEARLY DRAWBACK</a>
+                                </li>
+                                <li>
+                                    <a href="Contact.aspx">CONTACT</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                © 2014 eDrawback.com. All rights reserved.
+            </div>
+        </div>--%>
+    </form>
+</body>
+</html>
