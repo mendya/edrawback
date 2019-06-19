@@ -17,7 +17,7 @@ Imports System.Linq
 Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
-<Assembly: EdmSchemaAttribute("7f72dc91-e447-4274-a732-18eff539c77c")>
+<Assembly: EdmSchemaAttribute("76c66ef8-7f77-4d77-b7ef-2f724bb347f8")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("DB_9AA143_mendyaModel", "FK_Drawbacks_Drawback_Number", "Drawbacks", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(DB_9AA143_mendyaModel.Drawback), "Export", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DB_9AA143_mendyaModel.Export))>
 <Assembly: EdmRelationshipAttribute("DB_9AA143_mendyaModel", "Export_Company_FK", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(DB_9AA143_mendyaModel.User), "Export", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DB_9AA143_mendyaModel.Export), True)>
@@ -155,6 +155,20 @@ Namespace DB_9AA143_mendyaModel
         End Property
     
         Private _Users As ObjectSet(Of User)
+    
+        ''' <summary>
+        ''' No Metadata Documentation available.
+        ''' </summary>
+        Public ReadOnly Property database_firewall_rules() As ObjectSet(Of database_firewall_rules)
+            Get
+                If (_database_firewall_rules Is Nothing) Then
+                    _database_firewall_rules = MyBase.CreateObjectSet(Of database_firewall_rules)("database_firewall_rules")
+                End If
+                Return _database_firewall_rules
+            End Get
+        End Property
+    
+        Private _database_firewall_rules As ObjectSet(Of database_firewall_rules)
 
         #End Region
 
@@ -201,6 +215,13 @@ Namespace DB_9AA143_mendyaModel
         Public Sub AddToUsers(ByVal user As User)
             MyBase.AddObject("Users", user)
         End Sub
+    
+        ''' <summary>
+        ''' Deprecated Method for adding a new object to the database_firewall_rules EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+        ''' </summary>
+        Public Sub AddTodatabase_firewall_rules(ByVal database_firewall_rules As database_firewall_rules)
+            MyBase.AddObject("database_firewall_rules", database_firewall_rules)
+        End Sub
 
         #End Region
 
@@ -209,6 +230,206 @@ Namespace DB_9AA143_mendyaModel
     #End Region
 
     #Region "Entities"
+    
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmEntityTypeAttribute(NamespaceName:="DB_9AA143_mendyaModel", Name:="database_firewall_rules")>
+    <Serializable()>
+    <DataContractAttribute(IsReference:=True)>
+    Public Partial Class database_firewall_rules
+        Inherits EntityObject
+        #Region "Factory Method"
+    
+        ''' <summary>
+        ''' Create a new database_firewall_rules object.
+        ''' </summary>
+        ''' <param name="id">Initial value of the id property.</param>
+        ''' <param name="name">Initial value of the name property.</param>
+        ''' <param name="start_ip_address">Initial value of the start_ip_address property.</param>
+        ''' <param name="end_ip_address">Initial value of the end_ip_address property.</param>
+        ''' <param name="create_date">Initial value of the create_date property.</param>
+        ''' <param name="modify_date">Initial value of the modify_date property.</param>
+        Public Shared Function Createdatabase_firewall_rules(id As Global.System.Int32, name As Global.System.String, start_ip_address As Global.System.String, end_ip_address As Global.System.String, create_date As Global.System.DateTime, modify_date As Global.System.DateTime) As database_firewall_rules
+            Dim database_firewall_rules as database_firewall_rules = New database_firewall_rules
+            database_firewall_rules.id = id
+            database_firewall_rules.name = name
+            database_firewall_rules.start_ip_address = start_ip_address
+            database_firewall_rules.end_ip_address = end_ip_address
+            database_firewall_rules.create_date = create_date
+            database_firewall_rules.modify_date = modify_date
+            Return database_firewall_rules
+        End Function
+
+        #End Region
+
+        #Region "Simple Properties"
+    
+        ''' <summary>
+        ''' No Metadata Documentation available.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property id() As Global.System.Int32
+            Get
+                Return _id
+            End Get
+            Set
+                If (_id <> Value) Then
+                    OnidChanging(value)
+                    ReportPropertyChanging("id")
+                    _id = StructuralObject.SetValidValue(value, "id")
+                    ReportPropertyChanged("id")
+                    OnidChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _id As Global.System.Int32
+        Private Partial Sub OnidChanging(value As Global.System.Int32)
+        End Sub
+    
+        Private Partial Sub OnidChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' No Metadata Documentation available.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property name() As Global.System.String
+            Get
+                Return _name
+            End Get
+            Set
+                If (_name <> Value) Then
+                    OnnameChanging(value)
+                    ReportPropertyChanging("name")
+                    _name = StructuralObject.SetValidValue(value, false, "name")
+                    ReportPropertyChanged("name")
+                    OnnameChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _name As Global.System.String
+        Private Partial Sub OnnameChanging(value As Global.System.String)
+        End Sub
+    
+        Private Partial Sub OnnameChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' No Metadata Documentation available.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property start_ip_address() As Global.System.String
+            Get
+                Return _start_ip_address
+            End Get
+            Set
+                If (_start_ip_address <> Value) Then
+                    Onstart_ip_addressChanging(value)
+                    ReportPropertyChanging("start_ip_address")
+                    _start_ip_address = StructuralObject.SetValidValue(value, false, "start_ip_address")
+                    ReportPropertyChanged("start_ip_address")
+                    Onstart_ip_addressChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _start_ip_address As Global.System.String
+        Private Partial Sub Onstart_ip_addressChanging(value As Global.System.String)
+        End Sub
+    
+        Private Partial Sub Onstart_ip_addressChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' No Metadata Documentation available.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property end_ip_address() As Global.System.String
+            Get
+                Return _end_ip_address
+            End Get
+            Set
+                If (_end_ip_address <> Value) Then
+                    Onend_ip_addressChanging(value)
+                    ReportPropertyChanging("end_ip_address")
+                    _end_ip_address = StructuralObject.SetValidValue(value, false, "end_ip_address")
+                    ReportPropertyChanged("end_ip_address")
+                    Onend_ip_addressChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _end_ip_address As Global.System.String
+        Private Partial Sub Onend_ip_addressChanging(value As Global.System.String)
+        End Sub
+    
+        Private Partial Sub Onend_ip_addressChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' No Metadata Documentation available.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property create_date() As Global.System.DateTime
+            Get
+                Return _create_date
+            End Get
+            Set
+                If (_create_date <> Value) Then
+                    Oncreate_dateChanging(value)
+                    ReportPropertyChanging("create_date")
+                    _create_date = StructuralObject.SetValidValue(value, "create_date")
+                    ReportPropertyChanged("create_date")
+                    Oncreate_dateChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _create_date As Global.System.DateTime
+        Private Partial Sub Oncreate_dateChanging(value As Global.System.DateTime)
+        End Sub
+    
+        Private Partial Sub Oncreate_dateChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' No Metadata Documentation available.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property modify_date() As Global.System.DateTime
+            Get
+                Return _modify_date
+            End Get
+            Set
+                If (_modify_date <> Value) Then
+                    Onmodify_dateChanging(value)
+                    ReportPropertyChanging("modify_date")
+                    _modify_date = StructuralObject.SetValidValue(value, "modify_date")
+                    ReportPropertyChanged("modify_date")
+                    Onmodify_dateChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _modify_date As Global.System.DateTime
+        Private Partial Sub Onmodify_dateChanging(value As Global.System.DateTime)
+        End Sub
+    
+        Private Partial Sub Onmodify_dateChanged()
+        End Sub
+
+        #End Region
+
+    End Class
     
     ''' <summary>
     ''' No Metadata Documentation available.

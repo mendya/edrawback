@@ -96,7 +96,7 @@
             <div id="dialog-form"><embed style="width:100%;height:100%;" id="myiframe" />  </div>
         </div>
         <div class="rightside">
-             <input type="button" value="Go Back to Menu" onclick="location.href = 'Admin.aspx'"  />
+             <input type="button" value="Go Back to Menu" onclick="location.href = 'Admin.aspx'"  /><asp:TextBox runat="server" id="testtext"></asp:TextBox>
             <asp:DropDownList runat="server" ID="ddlcompany" AutoPostBack="true">                
             </asp:DropDownList>
             <asp:DropDownList runat="server" ID="ddlfile" Width="200px" >               

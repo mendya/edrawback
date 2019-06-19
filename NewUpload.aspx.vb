@@ -1,9 +1,14 @@
 ﻿
 Imports System.IO
+Imports Microsoft.Azure
+Imports Microsoft.WindowsAzure.Storage
+Imports Microsoft.WindowsAzure.Storage.File
 
 Partial Class NewUpload
     Inherits System.Web.UI.Page
-
+    Dim storageAccount As CloudStorageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"))
+    Dim fileClient As CloudFileClient = storageAccount.CreateCloudFileClient()
+    Dim share As CloudFileShare = fileClient.GetShareReference("docroot")
     Protected Sub btn_Click(sender As Object, e As EventArgs) Handles btn.Click
         If String.IsNullOrEmpty(text_style_no.Text) OrElse String.IsNullOrEmpty(txtDate.Text) Then
             lbl.Text = "Please enter at least one style and a Date of Import/Export."
@@ -106,6 +111,9 @@ Partial Class NewUpload
         ClientScript.RegisterStartupScript(Me.GetType(), "key", sb.ToString)
         txtFilter.Text = ""
         text_style_no.Text = ""
+        If share.Exists() Then
+            testtext.Text = "Exists!!"
+        End If
     End Sub
     Protected Sub Unnamed1_Click(sender As Object, e As EventArgs)
         File.Move(ConfigurationManager.AppSettings("RootPath") & ddlcompany.SelectedItem.Text & "\" & imporexp.SelectedItem.Text & "\" & ddlfile.SelectedItem.Text, ConfigurationManager.AppSettings("RootPath") & ddlcompany.SelectedItem.Text & "\" & imporexp.SelectedItem.Text & "\Archive\" & ddlfile.SelectedItem.Text)
