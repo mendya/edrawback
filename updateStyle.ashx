@@ -30,34 +30,34 @@ Public Class updateStyle : Implements IHttpHandler
             End Try
 
 
-            Dim dbContext As New DB_9AA143_mendyaModel.DB_9AA143_mendyaEntities
-            Dim statuses = dbContext.Status.Where(Function(s) s.Path.Contains("\" + style + "\")).ToList
-            For Each st In statuses
-                st.Path = st.Path.Replace("\" + style + "\", "\" + nstyle + "\")
-            Next
+            'Dim dbContext As New DB_9AA143_mendyaModel.DB_9AA143_mendyaEntities
+            'Dim statuses = dbContext.Status.Where(Function(s) s.Path.Contains("\" + style + "\")).ToList
+            'For Each st In statuses
+            '    st.Path = st.Path.Replace("\" + style + "\", "\" + nstyle + "\")
+            'Next
 
-            Dim t_imports = dbContext.Imports.Where(Function(s) s.style = style AndAlso s.company = company)
+            'Dim t_imports = dbContext.Imports.Where(Function(s) s.style = style AndAlso s.company = company)
 
-            For Each im In t_imports.AsNoTracking
-                dbContext.Detach(im)
-                im.style = nstyle
-                dbContext.AddToImports(im)
-            Next
-            For Each im In t_imports
-                dbContext.DeleteObject(im)
-            Next
+            'For Each im In t_imports.AsNoTracking
+            '    dbContext.Detach(im)
+            '    im.style = nstyle
+            '    dbContext.AddToImports(im)
+            'Next
+            'For Each im In t_imports
+            '    dbContext.DeleteObject(im)
+            'Next
 
-            Dim t_exports = dbContext.Exports.Where(Function(s) s.Style = style AndAlso s.Company = company)
-            For Each ex In t_exports.AsNoTracking
-                dbContext.Detach(ex)
-                ex.Style = nstyle
-                dbContext.AddToExports(ex)
-            Next
-            For Each ex In t_exports
-                dbContext.DeleteObject(ex)
-            Next
+            'Dim t_exports = dbContext.Exports.Where(Function(s) s.Style = style AndAlso s.Company = company)
+            'For Each ex In t_exports.AsNoTracking
+            '    dbContext.Detach(ex)
+            '    ex.Style = nstyle
+            '    dbContext.AddToExports(ex)
+            'Next
+            'For Each ex In t_exports
+            '    dbContext.DeleteObject(ex)
+            'Next
 
-            dbContext.SaveChanges()
+            'dbContext.SaveChanges()
 
 
 

@@ -556,6 +556,7 @@ warning 6002: The table/view 'edrawback.sys.database_firewall_rules' does not ha
         <edmx:DesignerProperty Name="EnablePluralization" Value="true" />
         <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <edmx:DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </edmx:DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

@@ -1,4 +1,5 @@
 ﻿
+Imports System.Data.SqlClient
 Imports System.IO
 Imports Microsoft.Azure
 Imports Microsoft.WindowsAzure.Storage
@@ -66,11 +67,27 @@ Partial Class NewUpload
             If UserCookie Is Nothing OrElse Not Regex.IsMatch(UserCookie("UserName"), "admin", RegexOptions.IgnoreCase) Then
                 Response.Redirect("login.aspx")
             End If
-            Using context As DB_9AA143_mendyaModel.DB_9AA143_mendyaEntities = New DB_9AA143_mendyaModel.DB_9AA143_mendyaEntities
-                Dim a = context.Users.Select(Function(u) u.Username).ToList
-                ddlcompany.DataSource = a
-                ddlcompany.DataBind()
+            Dim DataSource As String = ConfigurationManager.AppSettings("DataSource")
+            Dim InitialCatalog As String = ConfigurationManager.AppSettings("InitialCatalog")
+            Dim UserId As String = ConfigurationManager.AppSettings("UserId")
+            Dim Password As String = ConfigurationManager.AppSettings("Password")
+
+            Dim connectionString As String = "Data Source=" & DataSource & ";Initial Catalog=" & InitialCatalog & ";User Id=" & UserId & ";Password=" & Password & ";"
+            Dim queryString As String = "Select UserName from Users where username <> 'Admin';"
+            Using connection As New SqlConnection(connectionString)
+                connection.Open()
+                Using Command As New SqlCommand(queryString, connection)
+                    Using dr As SqlDataReader = Command.ExecuteReader
+                        If dr.HasRows Then
+                            While dr.Read
+                                ddlcompany.Items.Add(dr("username"))
+                            End While
+                        End If
+                    End Using
+                End Using
+
             End Using
+
 
 
         End If
