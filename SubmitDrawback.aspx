@@ -1,9 +1,11 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="SubmitDrawback.aspx.vb" Inherits="SubmitDrawback" MasterPageFile="~/MasterPage.master" %>
 
 <asp:Content runat="server" ID="content1" ContentPlaceHolderID="head">
-    <link rel="stylesheet" media="screen" href="http://handsontable.com/dist/handsontable.full.css" />
+   <!-- <link rel="stylesheet" media="screen" href="http://handsontable.com/dist/handsontable.full.css" /> -->
+    <link rel="stylesheet" href="css/handsontable.full.css" />
     <script src="Scripts/jquery.print.js"></script>
-    <script src="http://handsontable.com/dist/handsontable.full.js"></script>
+   <!-- <script src="http://handsontable.com/dist/handsontable.full.js"></script> -->
+    <script type="text/javascript" src="Scripts/handsontable.full.js" ></script>
     <style>
         @media print {
            thead {display: table-header-group;}
