@@ -14,6 +14,7 @@
         <AssociationConnector Association="DB_9AA143_mendyaModel.FK_Drawbacks_Drawback_Number" ManuallyRouted="false" />
         <AssociationConnector Association="DB_9AA143_mendyaModel.Export_Company_FK" ManuallyRouted="false" />
         <AssociationConnector Association="DB_9AA143_mendyaModel.Import_Company_FK" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_9AA143_mendyaModel.database_firewall_rules" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
