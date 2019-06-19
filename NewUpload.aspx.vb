@@ -80,37 +80,37 @@ Partial Class NewUpload
     End Sub
 
     Private Sub NewUpload_PreRender(sender As Object, e As EventArgs) Handles Me.PreRender
-        Dim c = New DirectoryInfo(ConfigurationManager.AppSettings("RootPath") & ddlcompany.SelectedItem.Text & "\" & imporexp.SelectedItem.Text & "\").GetFiles().Select(Function(o) o.Name).ToArray()
-        Dim a As IEnumerable(Of String)
-        If sort.Value = "ZA" Then
-            a = c.ToArray.OrderByDescending(Function(x) x)
-            ddlfile.DataSource = a
-        Else
-            ddlfile.DataSource = c
-        End If
-        ddlfile.DataBind()
-        Dim d = New DirectoryInfo(ConfigurationManager.AppSettings("RootPath") & ddlcompany.SelectedItem.Text).GetDirectories().Select(Function(o) o.Name).ToArray()
-        Dim sb As StringBuilder = New StringBuilder
-        sb.Append("<script>var Tags = [")
-        For i As Int16 = 0 To d.Count - 1
-            Dim dd = New DirectoryInfo(ConfigurationManager.AppSettings("RootPath") & ddlcompany.SelectedItem.Text & "\" & d(i)).GetDirectories().Select(Function(o) o.Name).ToArray()
-            For j As Int16 = 0 To dd.Count - 1
-                If i = d.Count - 1 AndAlso j = dd.Count - 1 Then
-                    sb.Append("""" & d(i) & " : " & dd(j) & """")
-                Else
-                    sb.Append("""" & d(i) & " : " & dd(j) & """" & ",")
-                End If
-            Next
+        'Dim c = New DirectoryInfo(ConfigurationManager.AppSettings("RootPath") & ddlcompany.SelectedItem.Text & "\" & imporexp.SelectedItem.Text & "\").GetFiles().Select(Function(o) o.Name).ToArray()
+        'Dim a As IEnumerable(Of String)
+        'If sort.Value = "ZA" Then
+        '    a = c.ToArray.OrderByDescending(Function(x) x)
+        '    ddlfile.DataSource = a
+        'Else
+        '    ddlfile.DataSource = c
+        'End If
+        'ddlfile.DataBind()
+        'Dim d = New DirectoryInfo(ConfigurationManager.AppSettings("RootPath") & ddlcompany.SelectedItem.Text).GetDirectories().Select(Function(o) o.Name).ToArray()
+        'Dim sb As StringBuilder = New StringBuilder
+        'sb.Append("<script>var Tags = [")
+        'For i As Int16 = 0 To d.Count - 1
+        '    Dim dd = New DirectoryInfo(ConfigurationManager.AppSettings("RootPath") & ddlcompany.SelectedItem.Text & "\" & d(i)).GetDirectories().Select(Function(o) o.Name).ToArray()
+        '    For j As Int16 = 0 To dd.Count - 1
+        '        If i = d.Count - 1 AndAlso j = dd.Count - 1 Then
+        '            sb.Append("""" & d(i) & " : " & dd(j) & """")
+        '        Else
+        '            sb.Append("""" & d(i) & " : " & dd(j) & """" & ",")
+        '        End If
+        '    Next
 
 
 
 
-        Next
-        sb.Append(" ];</script>")
+        'Next
+        'sb.Append(" ];</script>")
 
-        ClientScript.RegisterStartupScript(Me.GetType(), "key", sb.ToString)
-        txtFilter.Text = ""
-        text_style_no.Text = ""
+        'ClientScript.RegisterStartupScript(Me.GetType(), "key", sb.ToString)
+        'txtFilter.Text = ""
+        'text_style_no.Text = ""
         If share.Exists() Then
             testtext.Text = "Exists!!"
         End If
