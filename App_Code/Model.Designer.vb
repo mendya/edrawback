@@ -17,7 +17,7 @@ Imports System.Linq
 Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
-<Assembly: EdmSchemaAttribute("76c66ef8-7f77-4d77-b7ef-2f724bb347f8")>
+<Assembly: EdmSchemaAttribute("11f3fe9e-e4a5-47ed-ab5d-a4d9f2e876a1")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("DB_9AA143_mendyaModel", "FK_Drawbacks_Drawback_Number", "Drawbacks", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(DB_9AA143_mendyaModel.Drawback), "Export", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DB_9AA143_mendyaModel.Export))>
 <Assembly: EdmRelationshipAttribute("DB_9AA143_mendyaModel", "Export_Company_FK", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(DB_9AA143_mendyaModel.User), "Export", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DB_9AA143_mendyaModel.Export), True)>
