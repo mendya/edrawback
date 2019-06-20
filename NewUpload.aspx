@@ -24,7 +24,7 @@
                 position: 'left',
                 open: function (ev, ui) {
                     
-                    $('#myiframe').attr('src', 'http://edrawback.com/docroot/' + $(<%=ddlcompany.ClientID %>).val() + "/" + $(<%=imporexp.ClientID %>).val() + "/" + $(<%=ddlfile.ClientID %>).val() );
+                    $('#myiframe').attr('src', 'https://edrawback.blob.core.windows.net/edrawback/' + $(<%=ddlcompany.ClientID %>).val() + "/" + $(<%=imporexp.ClientID %>).val() + "/" + $(<%=ddlfile.ClientID %>).val() );
                     $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
                 },
                 close: function () {
@@ -43,7 +43,7 @@
             //    location.reload();
             //});
             $('#ddlfile').change(function () {
-                $('#myiframe').attr('src', 'http://edrawback.com/docroot/' + $(<%=ddlcompany.ClientID %>).val() + "/" + $(<%=imporexp.ClientID %>).val() + "/" + $(<%=ddlfile.ClientID %>).val() );
+                $('#myiframe').attr('src', 'https://edrawback.blob.core.windows.net/edrawback/' + $(<%=ddlcompany.ClientID %>).val() + "/" + $(<%=imporexp.ClientID %>).val() + "/" + $(<%=ddlfile.ClientID %>).val() );
             });
             $(".datepicker").datepicker();
             $('#<%= lbl.ClientID %>').fadeOut(8000, function () {
@@ -96,7 +96,7 @@
             <div id="dialog-form"><embed style="width:100%;height:100%;" id="myiframe" />  </div>
         </div>
         <div class="rightside">
-             <input type="button" value="Go Back to Menu" onclick="location.href = 'Admin.aspx'"  /><asp:TextBox runat="server" id="testtext"></asp:TextBox>
+             <input type="button" value="Go Back to Menu" onclick="location.href = 'Admin.aspx'"  />
             <asp:DropDownList runat="server" ID="ddlcompany" AutoPostBack="true">                
             </asp:DropDownList>
             <asp:DropDownList runat="server" ID="ddlfile" Width="200px" >               

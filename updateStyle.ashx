@@ -29,7 +29,7 @@ Public Class updateStyle : Implements IHttpHandler
                 'Exit Sub
             End Try
 
-
+            'TODO UNCOMMENT 6/19/2019
             'Dim dbContext As New DB_9AA143_mendyaModel.DB_9AA143_mendyaEntities
             'Dim statuses = dbContext.Status.Where(Function(s) s.Path.Contains("\" + style + "\")).ToList
             'For Each st In statuses
