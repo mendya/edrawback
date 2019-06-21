@@ -164,6 +164,8 @@ Partial Class NewUpload
         txtFilter.Text = ""
         text_style_no.Text = ""
         ClientScript.RegisterStartupScript(Me.GetType(), "key", sb.ToString)
+        txtFilter.Text = ""
+        text_style_no.Text = ""
         'Dim c = New DirectoryInfo(ConfigurationManager.AppSettings("RootPath") & ddlcompany.SelectedItem.Text & "\" & imporexp.SelectedItem.Text & "\").GetFiles().Select(Function(o) o.Name).ToArray()
         'Dim a As IEnumerable(Of String)
         'If sort.Value = "ZA" Then

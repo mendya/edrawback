@@ -93,7 +93,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="leftside" >               
-            <div id="dialog-form"><embed style="width:100%;height:100%;" id="myiframe" />  </div>
+            <div id="dialog-form"><embed style="width:100%;height:100%;" id="myiframe" type="application/pdf" />  </div>
         </div>
         <div class="rightside">
              <input type="button" value="Go Back to Menu" onclick="location.href = 'Admin.aspx'"  />
