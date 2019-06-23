@@ -25,6 +25,7 @@ Partial Class NewUpload
         Dim blobref = refContainer.GetBlobReference(ddlcompany.SelectedItem.Text & "/" & imporexp.SelectedItem.Text & "/" & ddlfile.SelectedItem.Text)
         blobref.DownloadToFile(Path.GetTempPath() + ddlfile.SelectedItem.Text, FileMode.Create)
         Dim cloudblob As CloudBlockBlob = refContainer.GetBlockBlobReference(ddlcompany.SelectedItem.Text & "/" & imporexp.SelectedItem.Text & "/Archive/" & ddlfile.SelectedItem.Text)
+        cloudblob.Properties.ContentType = "application/pdf"
         cloudblob.UploadFromFile(Path.GetTempPath() + ddlfile.SelectedItem.Text)
         refContainer = cloudBlobClient.GetContainerReference("docroot")
         Dim styles As String = text_style_no.Text.Replace(" ", "").Replace("/", "-")
@@ -36,6 +37,7 @@ Partial Class NewUpload
             Dim thedate As String = dt.Year & "-" & dt.Month.ToString("D2") & "-" & dt.Day.ToString("D2")
             Dim foldername = String.Concat(thedate, " ", imporexp.Text)
             cloudblob = refContainer.GetBlockBlobReference(ddlcompany.SelectedItem.Text & "/" & Style & "/" & foldername & "/" & ddlfile.SelectedItem.Text)
+            cloudblob.Properties.ContentType = "application/pdf"
             cloudblob.UploadFromFile(Path.GetTempPath() + ddlfile.SelectedItem.Text)
         Next
         blobref.Delete()
@@ -204,7 +206,9 @@ Partial Class NewUpload
         Dim blobref = refContainer.GetBlobReference(ddlcompany.SelectedItem.Text & "/" & imporexp.SelectedItem.Text & "/" & ddlfile.SelectedItem.Text)
         blobref.DownloadToFile(Path.GetTempPath() + ddlfile.SelectedItem.Text, FileMode.Create)
         Dim cloudblob As CloudBlockBlob = refContainer.GetBlockBlobReference(ddlcompany.SelectedItem.Text & "/" & imporexp.SelectedItem.Text & "/Archive/" & ddlfile.SelectedItem.Text)
+        cloudblob.Properties.ContentType = "application/pdf"
         cloudblob.UploadFromFile(Path.GetTempPath() + ddlfile.SelectedItem.Text)
+
         blobref.Delete()
         File.Delete(Path.GetTempPath() + ddlfile.SelectedItem.Text)
         Dim blobs = BlobHelper.ListFolderBlobsNonRecursive("edrawback", ddlcompany.SelectedItem.Text & "/" & imporexp.SelectedItem.Text).Select(Function(w) w.FileName).ToArray()

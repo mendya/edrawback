@@ -20,14 +20,38 @@ Public Class updateStyle : Implements IHttpHandler
             Dim nstyle = context.Request.QueryString("nstyle")
 
             Dim direc As String = ConfigurationManager.AppSettings.Item("RootPath") & company & "\" & style
+            BlobHelper.RenameBlob(company & "/" & style, company & "/" & nstyle, "docroot")
             Try
-                Directory.Move(direc, direc.Replace(style, nstyle))
+                ' Directory.Move(direc, direc.Replace(style, nstyle))
             Catch ex As Exception
                 'TODO
-                FileSystem.MoveDirectory(direc, direc.Replace(style, nstyle))
+                'FileSystem.MoveDirectory(direc, direc.Replace(style, nstyle))
                 'response = "True" 'Directory exists.
                 'Exit Sub
             End Try
+
+            Dim DataSource As String = ConfigurationManager.AppSettings("DataSource")
+            Dim InitialCatalog As String = ConfigurationManager.AppSettings("InitialCatalog")
+            Dim UserId As String = ConfigurationManager.AppSettings("UserId")
+            Dim Password As String = ConfigurationManager.AppSettings("Password")
+            Dim connectionString As String = "Data Source=" & DataSource & ";Initial Catalog=" & InitialCatalog & ";User Id=" & UserId & ";Password=" & Password & ";"
+            Dim queryString As String
+            Using connection As New SqlConnection(connectionString)
+                connection.Open()
+                queryString = "Update Status Set Path = Replace(Path,'/" & style & "/' ,'/" & nstyle & "/') where Username = '" & company & "' and Path like '" & company & "/" & style & "/%'"
+                Dim command As New SqlCommand(queryString, connection)
+                command.ExecuteNonQuery()
+
+                queryString = "Update Import Set Style = '" & nstyle & "' where company = '" & company & "' and Style = '" & style & "'"
+                command = New SqlCommand(queryString, connection)
+                command.ExecuteNonQuery()
+
+                queryString = "Update Export Set Style = '" & nstyle & "' where company = '" & company & "' and Style = '" & style & "'"
+                command = New SqlCommand(queryString, connection)
+                command.ExecuteNonQuery()
+
+            End Using
+
 
             'TODO UNCOMMENT 6/19/2019
             'Dim dbContext As New DB_9AA143_mendyaModel.DB_9AA143_mendyaEntities

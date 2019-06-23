@@ -21,9 +21,12 @@ Partial Class PA
                 hmf.Text = "0"
                 conversion.Text = "1"
                 importdate.Text = hdnImportDate.Value
-                For Each f In Directory.GetFiles(ConfigurationManager.AppSettings.Item("RootPath") & hdnCompany.Value & "\" & hdnStyle.Value & "\" & hdnImportDate.Value & " Import")
-                    ddlinfoimport.Items.Add(New ListItem(Path.GetFileName(f), f))
+                For Each k In BlobHelper.ListFileBlobsNonRecursive("docroot", hdnCompany.Value & "/" & hdnStyle.Value & "/" & hdnImportDate.Value & " Import")
+                    ddlinfoimport.Items.Add(New ListItem(Regex.Replace(k.FileName, " ", "%20")))
                 Next
+                'For Each f In Directory.GetFiles(ConfigurationManager.AppSettings.Item("RootPath") & hdnCompany.Value & "\" & hdnStyle.Value & "\" & hdnImportDate.Value & " Import")
+                '    ddlinfoimport.Items.Add(New ListItem(Path.GetFileName(f), f))
+                'Next
                 ddlinfoimport.DataBind()
                 'Try
                 '    File.Copy(ddlinfoimport.SelectedValue, String.Concat(Regex.Replace(ConfigurationManager.AppSettings.Item("RootPath"), "[^\\]+\\?$", ""), "pdf.pdf"), True)

@@ -60,27 +60,30 @@ Public Class getViewDates : Implements IHttpHandler
             '        End Using
             '    End Using
             ' Else
-            For Each file In Directory.GetDirectories(direc)
-                Dim r As String = Regex.Match(file, "[^\\]*(\w+)$").Value
+
+            For Each f In BlobHelper.ListFolderBlobsNonRecursive("docroot", company & "/" & style)
+                Dim file = f.FileName.Replace("/", "")
+                Dim fullpath = Regex.Replace(f.BlobFilePath, "/$", "")
+                Dim r As String = Regex.Match(File, "[^\\]*(\w+)$").Value
                 Dim x As String = IIf(Regex.IsMatch(r, "Import|Export|Destroyed"), "info", "view")
                 Dim doit As Boolean = True
                 If Not String.IsNullOrEmpty(dn) Then
-                    If Regex.IsMatch(file, "Import") Then
+                    If Regex.IsMatch(File, "Import") Then
                         Using Command As New SqlCommand("select drawback_number from export where drawback_number=@dn and company=@company and style=@style and import_date=@import_date; ", connection)
                             Command.Parameters.AddWithValue("@company", company)
                             Command.Parameters.AddWithValue("@style", style)
-                            Command.Parameters.AddWithValue("@import_date", Regex.Replace(Regex.Match(file, "[^\\]*(\w+)$").Value, " Import", ""))
+                            Command.Parameters.AddWithValue("@import_date", Regex.Replace(Regex.Match(File, "[^\\]*(\w+)$").Value, " Import", ""))
                             Command.Parameters.AddWithValue("@dn", dn)
                             Dim res = Command.ExecuteScalar
                             If String.IsNullOrEmpty(res) Then
                                 doit = False
                             End If
                         End Using
-                    ElseIf Regex.IsMatch(file, "Export|Destroyed") Then
+                    ElseIf Regex.IsMatch(File, "Export|Destroyed") Then
                         Using Command As New SqlCommand("select drawback_number from export where drawback_number=@dn and company=@company and style=@style and export_date=@export_date; ", connection)
                             Command.Parameters.AddWithValue("@company", company)
                             Command.Parameters.AddWithValue("@style", style)
-                            Command.Parameters.AddWithValue("@export_date", Regex.Replace(Regex.Match(file, "[^\\]*(\w+)$").Value, " Export| Destroyed", ""))
+                            Command.Parameters.AddWithValue("@export_date", Regex.Replace(Regex.Match(File, "[^\\]*(\w+)$").Value, " Export| Destroyed", ""))
                             Command.Parameters.AddWithValue("@dn", dn)
                             Dim res = Command.ExecuteScalar
                             If String.IsNullOrEmpty(res) Then
@@ -93,7 +96,7 @@ Public Class getViewDates : Implements IHttpHandler
                 If doit Then
                     Using Command As New SqlCommand("select approved , comments from status where username=@company and path=@path;", connection)
                         Command.Parameters.AddWithValue("@company", context.Request.QueryString("company"))
-                        Command.Parameters.AddWithValue("@path", file)
+                        Command.Parameters.AddWithValue("@path", fullpath)
                         Using datareader As SqlDataReader = Command.ExecuteReader
                             If datareader.HasRows Then
                                 datareader.Read()

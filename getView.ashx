@@ -58,7 +58,7 @@ Public Class getView : Implements IHttpHandler
                             End While
                         End Using
                     End Using
-                    For Each stylefolder In Directory.GetDirectories(direc)
+                    For Each stylefolder In BlobHelper.ListFolderBlobsNonRecursive("docroot", context.Request.QueryString("company")).Select(Function(w) w.FileName.Replace("/", "")).ToArray
                         Dim isPending As Boolean = False
                         Dim Mport As Boolean = False
                         Dim id As Date = DateTime.MinValue, ed As Date = DateTime.MinValue
@@ -69,23 +69,24 @@ Public Class getView : Implements IHttpHandler
                             Else
                                 stts = True
                             End If
-                            For Each datefolder In Directory.GetDirectories(stylefolder)
-                                Dim datefoldername As String = New DirectoryInfo(datefolder).Name
-                                Dim dated = Regex.Match(datefoldername, "[0-9]{4}-[0-9]{2}-[0-9]{2} [Import|Export|Destroyed]").Value
-                                Dim imp = Regex.Match(datefoldername, "Import").Value
+                            For Each datefolderblob In BlobHelper.ListFolderBlobsNonRecursive("docroot", context.Request.QueryString("company") & "/" & stylefolder)
+                                Dim datefolder = datefolderblob.FileName.Replace("/", "")
+                                Dim dated = Regex.Match(datefolder, "[0-9]{4}-[0-9]{2}-[0-9]{2} [Import|Export|Destroyed]").Value
+                                Dim imp = Regex.Match(datefolder, "Import").Value
                                 If imp = "Import" Then
                                     Mport = True
-                                    id = DateTime.ParseExact(Regex.Match(datefoldername, "[0-9]{4}-[0-9]{2}-[0-9]{2}").Value, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
+                                    id = DateTime.ParseExact(Regex.Match(datefolder, "[0-9]{4}-[0-9]{2}-[0-9]{2}").Value, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
                                 End If
                                 'queryString = "Select Approved from Status where Username= @Username and Path= @Path;"
                                 'Dim command As New SqlCommand(queryString, connection)
                                 'command.Parameters.AddWithValue("@Username", context.Request.QueryString("company"))
                                 'command.Parameters.AddWithValue("@Path", datefolder)
                                 ' Status =  command.ExecuteScalar
-                                ' Much faster                                
+                                ' Much faster      
+                                Dim fullpath = Regex.Replace(datefolderblob.BlobFilePath, "/$", "")
                                 Status = h(datefolder.ToLower)
-                                If Regex.IsMatch(datefoldername, "Export|Destroyed") AndAlso Status = stts Then
-                                    ed = DateTime.ParseExact(Regex.Match(datefoldername, "[0-9]{4}-[0-9]{2}-[0-9]{2}").Value, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
+                                If Regex.IsMatch(datefolder, "Export|Destroyed") AndAlso Status = stts Then
+                                    ed = DateTime.ParseExact(Regex.Match(datefolder, "[0-9]{4}-[0-9]{2}-[0-9]{2}").Value, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
                                     If context.Request.QueryString("tftea") = "" Then
                                         If id.AddYears(5) >= dt AndAlso ed.AddYears(5) >= dt Then
                                             isPending = True

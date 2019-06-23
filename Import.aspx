@@ -598,7 +598,7 @@
            // $("#embed").attr("src", "http://www.edrawbacks.com/pdf.pdf?rand=" + Math.floor(Math.random() * 100001));
            // $("#embedtd").replaceWith("<td id='embedtd'><iframe id='embed' src='http://docs.google.com/gview?url=" + 'http://www.edrawback.com/docroot/' + '<%= hdnCompany.Value%>' + '/' + '<%= hdnStyle.Value%>' + '/' + '<%= importdate.Text%>' + ' Import/' + ($("[id*='ddlinfoimport'] :selected").text()).toString().trim() + "&embedded=true' width='100%' height='780' type='application/pdf'></td>");
             $("#ddlinfoimport").change(function () {
-                $('#myiframe').attr('src', 'http://edrawback.com/docroot/' + '<%= hdnCompany.Value%>' + '/' + '<%= hdnStyle.Value%>' + '/' + '<%= importdate.Text%>' + ' Import/' + ($("[id*='ddlinfoimport'] :selected").text()).toString().trim());
+                $('#myiframe').attr('src', 'https://edrawback.blob.core.windows.net/docroot/' + '<%= hdnCompany.Value%>' + '/' + '<%= hdnStyle.Value%>' + '/' + '<%= importdate.Text%>' + '%20Import/' + ($("[id*='ddlinfoimport'] :selected").text()).toString().trim());
             });
             var wWidth = $(window).width();
             var dWidth = wWidth * 0.46;
@@ -612,7 +612,7 @@
                 position: 'left',
                 open: function (ev, ui) {
 
-                    $('#myiframe').attr('src', 'http://edrawback.com/docroot/' + '<%= hdnCompany.Value%>' + '/' + '<%= hdnStyle.Value%>' + '/' + '<%= importdate.Text%>' + ' Import/' + ($("[id*='ddlinfoimport'] :selected").text()).toString().trim());
+                    $('#myiframe').attr('src', 'https://edrawback.blob.core.windows.net/docroot/' + '<%= hdnCompany.Value%>' + '/' + '<%= hdnStyle.Value%>' + '/' + '<%= importdate.Text%>' + '%20Import/' + ($("[id*='ddlinfoimport'] :selected").text()).toString().trim());
                     $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
                 },
                 close: function () {
@@ -657,7 +657,7 @@
                 </tr>
                 <tr>
                     <td>
-                    <div id="dialog-form"><embed style="width:100%;height:100%;" id="myiframe" />  </div>
+                    <div id="dialog-form"><embed style="width:100%;height:100%;" id="myiframe" type="application/pdf" />  </div>
                    <%-- <td id="embedtd" style="vertical-align: top;">
                         <a href="http://www.edrawbacks.com/pdf.pdf" id="embedURL2">Download file</a>--%>
 <%--                        <embed id="embed" src="http://www.edrawbacks.com/pdf.pdf" width="600" height="480" type="application/pdf">--%>

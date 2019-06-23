@@ -64,7 +64,7 @@ Public Module BlobHelper
 
             If TypeOf bl Is CloudBlobDirectory Then
                 Dim blobDir = bl.Uri.OriginalString.Replace(bl.Container.Uri.OriginalString & "/", "")
-                blobDir = blobDir.Remove(blobDir.Length - 1)
+                blobDir = blobDir.Remove(blobDir.Length - 1).Replace("%20", " ")
                 Dim subBlobs = ListFileBlobsRecursive(containerName, blobDir)
                 blobInfos.AddRange(subBlobs)
             End If
@@ -95,5 +95,24 @@ Public Module BlobHelper
         Next
 
         Return blobInfos
+    End Function
+    Public Function RenameBlob(ByVal oldName As String, ByVal newName As String, ByVal containerName As String) As CloudBlockBlob
+        Dim blobContainer = GetBlobContainer(containerName)
+        If Not blobContainer.Exists() Then
+            Throw New Exception("Destination container does not exist.")
+        End If
+        For Each direc In BlobHelper.ListFileBlobsRecursive("docroot", oldName)
+            Dim sourceBlob As CloudBlockBlob = blobContainer.GetBlockBlobReference(direc.BlobFilePath)
+
+            If sourceBlob Is Nothing AndAlso sourceBlob.Exists() Then
+                Throw New Exception("Source blob cannot be null and should exist.")
+            End If
+
+            Dim destBlob As CloudBlockBlob = blobContainer.GetBlockBlobReference(Regex.Replace(direc.BlobFilePath, oldName, newName))
+            destBlob.StartCopyAsync(sourceBlob)
+            sourceBlob.Delete()
+        Next
+
+        Return Nothing
     End Function
 End Module
